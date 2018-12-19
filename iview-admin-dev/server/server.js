@@ -5,6 +5,7 @@ const path = require('path');
 const history = require("connect-history-api-fallback");
 const app = express();
 const fs = require('fs');
+require("./DateFomat");
 const contentType = {
   "css": "text/css",
   "gif": "image/gif",

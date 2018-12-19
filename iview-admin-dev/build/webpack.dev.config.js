@@ -4,13 +4,20 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const merge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.base.config.js');
-const fs = require('fs');
-const package = require('../package.json');
 
-fs.open('./build/env.js', 'w', function(err, fd) {
-    const buf = 'export default "development";';
-    fs.write(fd, buf, 0, buf.length, 0, function(err, written, buffer) {});
-});
+
+const fs = require('fs');
+//const package = require('../package.json');
+
+
+const buf = 'export default "development";';
+fs.writeFile('./build/env.js', buf, function(){});
+// fs.open('./build/env.js', 'w+', function(err, fd) {
+//     console.log(fd);
+//     fs.write(fd, buf, 0, buf.length, 0, function(err, written, buffer){
+//         console.log(err, written, buffer);
+//     });
+// });
 
 module.exports = merge(webpackBaseConfig, {
     devtool: '#source-map',
