@@ -50,7 +50,7 @@ gulp.task('connect', () => {
 });
 
 gulp.task('open', () => {
-  gulp.src('./playground/index.html').pipe(gopen({ uri: 'http://localhost:3000/playground/' }));
+  gulp.src('./playground/index.html').pipe(gopen({ uri: 'http://timo.hztonline.com:3000/playground/' }));
 });
 
 gulp.task('server', ['watch', 'connect', 'open']);
