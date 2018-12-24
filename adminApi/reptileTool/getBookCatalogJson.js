@@ -46,10 +46,13 @@ async function getBookCatalogJson_common(reptileType, url, callback, errorback) 
                 bookStatus = 2;
             }
             let count;
+            let countSql = `select count(*) from book where name='${title}' and author='${author}'`;
             try {
-                count = (await db.query(`select count(*) from book where name='${title}' and author='${author}'`))[0]["count(*)"];
+                count = (await db.query(countSql))[0]["count(*)"];
             } catch (err) {
+                console.log("countSql:", countSql);
                 if (errorback) errorback(err);
+                
                 return;
             }
             if (count > 0) {

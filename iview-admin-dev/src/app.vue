@@ -26,9 +26,11 @@
 <style>
 html,body{
     width: 100%;
+    min-width: 1440px;
     height: 100%;
     background: #f0f0f0;
     overflow: hidden;
+    position: relative;
 }
 .app-main{
     width: 100%;

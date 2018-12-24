@@ -28,9 +28,11 @@ router.use('', async function(req, res, next) {
     let otherBook = [];
     if(bookId) {
         try{
-            book = (await db.query(`
-                select book.id,book.name,book.author,book.description,book.originUrl,book.bookType,DATE_FORMAT(book.updateTime,'%Y-%m-%d') as updateTime,reptiletool.remark from book inner join reptiletool on book.reptileType=reptiletool.id where book.id=${bookId};
-                `))[0];
+            var sqlStr = `select book.id,book.name,book.author,book.description,book.originUrl,book.bookType,DATE_FORMAT(book.updateTime,'%Y-%m-%d') as updateTime,reptiletool.remark from book inner join reptiletool on book.reptileType=reptiletool.id where book.id=${bookId};`
+            console.log("sql:", sqlStr);
+            var bookInfo = await db.query(sqlStr);
+            console.log("bookInfo:", bookInfo);
+            book = bookInfo[0];
             let description = "<p>";
             description += book.description.replace("<br/>","<br>").split("<br>").join("</p><p>");
             description += "</p>";

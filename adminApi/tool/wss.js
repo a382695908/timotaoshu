@@ -1,4 +1,5 @@
 const WebSocket = require('ws');
+console.log("websocket服务器开启端口8000");
 const wss = new WebSocket.Server({
     port: 8000,
     verifyClient: socketVerify, //可选，验证连接函数
@@ -21,10 +22,13 @@ const wss = new WebSocket.Server({
         threshold: 1024,               // Size (in bytes) below which messages
                                        // should not be compressed.
     }
+}, (err, data)=>{
+    console.log("websocket服务器开启了,端口8000");
+    console.log(err, data);
 });
 
 let count = 0;  //目前正在连接服务器的数量
-console.log("websocket服务器开启了,端口8000");
+
 
 wss.on('connection', function (ws) {
     count++;

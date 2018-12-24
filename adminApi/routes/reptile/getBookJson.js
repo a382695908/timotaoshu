@@ -37,6 +37,8 @@ router.use('', oauth(4001),  async function(req, res, next) {
                 res.send(tool.toJson(null, '本书已存在', 1002));
             }else {
                 res.send(tool.toJson(null, '失败原因：' + error, 1002));
+                console.log("reptileType:", reptileType);
+                console.log("bookUrl:", bookUrl);
             }
         });
     } catch(err) {

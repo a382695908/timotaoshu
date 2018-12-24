@@ -50,7 +50,10 @@ async function getIpList(page) {
                 allPage
             });
         }).catch(function(err){
+            log.error(option);
             log.error(err);
+            console.log(page);
+            console.log(err);
             // resolve(false);
             reject();
         });
@@ -104,6 +107,8 @@ async function getIpList2(page) {
             });
         }).catch(function(err){
             log.error(err);
+            console.log(page);
+            console.log(err);
             // resolve(false);
             reject();
         });
@@ -230,7 +235,11 @@ module.exports = async (page) => {
                 allPage
             });
         }).catch((err) => {
+            log.error(page);
             log.error(err);
+            console.log(page);
+            console.log(err);
+
             resolve(false);
         });
     });

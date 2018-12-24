@@ -56,6 +56,7 @@ app.get('*',function(req, res) {
   res.send(html);
 });
 
+console.log("监听9092");
 app.listen(9092, () => {
   console.log("正在监听9092");
 })

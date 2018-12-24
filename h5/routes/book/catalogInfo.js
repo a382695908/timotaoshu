@@ -24,8 +24,15 @@ router.use('', async function(req, res, next) {
         return;
     }
 
-    let bookList = await db.query(`select * from book where id=${bookId}`);
-    let catalogList = await db.query(`select * from (select * from catalog where bookId=${bookId} and num < ${num} order by num desc limit 0,1)a union all select * from (select * from catalog where bookId=${bookId} and num >= ${num} order by num limit 0,2 )b`);
+    let bookListSql = `select * from book where id=${bookId}`;
+    
+    let bookList = await db.query(bookListSql);
+    
+
+    let catalogListSql = `select * from (select * from catalog where bookId=${bookId} and num < ${num} order by num desc limit 0,1)a union all select * from (select * from catalog where bookId=${bookId} and num >= ${num} order by num limit 0,2 )b`;
+    
+    let catalogList = await db.query(catalogListSql);
+    
 
     let catalog, book, catalogName, prevCatalog,nextCatalog;
 
@@ -57,12 +64,23 @@ router.use('', async function(req, res, next) {
     let bookName = book.name;
 
     let oldContainer = "";
+    var txtPath = path.join(__dirname, '../../../books/' + bookId + "/" + catalogId + ".txt");
     try{
-        oldContainer = fs.readFileSync(path.join(__dirname, '../../../books/' + bookId + "/" + catalogId + ".txt"),'utf-8').toString();
-    }catch(err) {
+        oldContainer = fs.readFileSync(txtPath, 'utf-8').toString();
+    }catch(err1) {
+        var txtPath1 = path.join(__dirname, '../../../books/' + bookId + "/" + tool.jiami(catalogId) + ".txt");
         try {
-            oldContainer = fs.readFileSync(path.join(__dirname, '../../../books/' + bookId + "/" + tool.jiami(catalogId) + ".txt"),'utf-8').toString();
+            
+            oldContainer = fs.readFileSync(txtPath1, 'utf-8').toString();
         } catch(err) {
+            console.log("bookListSql:", bookListSql);
+            console.log("bookList:", bookList);
+            console.log("catalogListSql:", catalogListSql);
+            console.log("catalogList:", catalogList);
+            console.log("txtPath:", txtPath);
+            console.log(err1);
+            console.log("txtPath1:", txtPath1);
+            console.log(err);
             // res.send(tool.toJson(null, '没有该文本', 1002));
             // return;
         }
@@ -86,6 +104,8 @@ router.use('', async function(req, res, next) {
         nextCatalog:nextCatalog,
         container: container
     }
+
+    console.log("catalogInfo:", catalogInfo);
 
 
 
