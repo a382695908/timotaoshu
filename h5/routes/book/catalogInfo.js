@@ -105,7 +105,7 @@ router.use('', async function(req, res, next) {
         container: container
     }
 
-    console.log("catalogInfo:", catalogInfo);
+    //console.log("catalogInfo:", catalogInfo);
 
 
 
