@@ -98,7 +98,7 @@ module.exports = merge(webpackBaseConfig, {
         }),
         new HtmlWebpackPlugin({
             // title: 'iView admin v' + package.version,
-            title: '提莫淘书后台管理系统',
+            title: '海贼团后台管理系统',
             favicon: './lib/td_icon.ico',
             filename: '../index.html',
             template: '!!ejs-loader!./src/template/index.ejs',

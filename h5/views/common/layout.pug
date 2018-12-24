@@ -2,7 +2,7 @@ doctype html
 html
     head
         meta(charset="utf-8")
-        title= `${site?(site.title?site.title +'？提莫淘书,猜你喜欢':'提莫淘书'):'提莫淘书'}`
+        title= `${site?(site.title?site.title +'？海贼团,猜你喜欢':'海贼团'):'海贼团'}`
         meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
         meta(name="viewport" content="initial-scale=1, width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1, user-scalable=no" media="(device-height: 568px)" )
         meta(name="renderer" content="webkit")
@@ -14,14 +14,14 @@ html
         meta(name="format-detection" content="telephone=no")
         meta(name="format-detection" content="address=no")
         link(rel="icon" href="/images/favicon.ico" type="image/x-icon")
-        meta(name="keywords" content=`${site?(site.keywords?site.keywords:"提莫淘,提莫淘书,提莫淘小说"):'提莫淘,提莫淘书,提莫淘小说'}`)
-        meta(name="description" content=`${site?(site.description?site.description:'完本小说，尽在提莫淘书'):'完本小说，尽在提莫淘书'}`)
+        meta(name="keywords" content=`${site?(site.keywords?site.keywords:"海贼,海贼团,海贼小说"):'海贼,海贼团,海贼小说'}`)
+        meta(name="description" content=`${site?(site.description?site.description:'完本小说，尽在海贼团'):'完本小说，尽在海贼团'}`)
         //- QQ、QQ浏览器分享显示的标题
-        meta(itemprop="name" content=`${site?(site.title?site.title +'？提莫淘书,猜你喜欢':'提莫淘书'):'提莫淘书'}`)
+        meta(itemprop="name" content=`${site?(site.title?site.title +'？海贼团,猜你喜欢':'海贼团'):'海贼团'}`)
         //-QQ、QQ浏览器分享显示的缩略图
         meta(itemprop="image" content=`${site?(site.title?'http://book.hztonline.com:3000/images/'+site.id:'/images/favicon.ico'):'/images/favicon.ico'}`)
         //-QQ、QQ浏览器分享显示的简介
-        meta(name="description" itemprop="description" content=`${site?(site.description?site.description:'完本小说，尽在提莫淘书'):'完本小说，尽在提莫淘书'}`)
+        meta(name="description" itemprop="description" content=`${site?(site.description?site.description:'完本小说，尽在海贼团'):'完本小说，尽在海贼团'}`)
 
         link(rel="prerender" href="/css/common.css")
         link(rel="prerender" href="/js/common.js")
