@@ -16,3 +16,5 @@ urlLog.log
 /adminApi/upload
 /adminApi/public/img
 books_bak
+/common/host.js
+/iview-admin-dev/src/config.js
