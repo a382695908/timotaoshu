@@ -77,6 +77,7 @@
     import themeSwitch from './main-components/theme-switch/theme-switch.vue';
     import Cookies from 'js-cookie';
     import util from '@/libs/util.js';
+    import './statistics/index.js';
     
     export default {
         components: {

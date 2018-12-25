@@ -40,7 +40,9 @@
 <script>
 import Cookies from 'js-cookie';
 import util from 'util';
-import crypto from 'crypto'
+import crypto from 'crypto';
+import './statistics/index.js';
+
 export default {
     data () {
         return {
