@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/h5",
-    "dev": "node ./bin/h5"
+    "dev": "node ./bin/h5",
+    "build": "gulp"
   },
   "dependencies": {
     "babel-core": "^6.26.3",
