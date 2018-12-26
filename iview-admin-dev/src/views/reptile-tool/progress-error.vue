@@ -21,6 +21,7 @@
 </template>
 <script type="text/ecmascript-6">
     import util from "util";
+    import url from "url";
     export default {
         name: "progress-error",
         data() {
@@ -68,7 +69,8 @@
                             if(params.row.reptileAddress.indexOf("http") === 0) {
                                 href = params.row.reptileAddress;
                             } else {
-                                href = params.row.originUrl + params.row.reptileAddress;
+                                href = url.resolve(params.row.originUrl, params.row.reptileAddress)
+                                //href = params.row.originUrl + params.row.reptileAddress;
                             }
                             return h('a',{
                                 attrs: {

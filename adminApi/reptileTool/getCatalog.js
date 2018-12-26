@@ -1,5 +1,6 @@
 const {fs, rp, cheerio, iconv, path, tool, wss, log, db} = require("../tool/require");
-let reptileCommon = require("./common/reptileCommon")
+let reptileCommon = require("./common/reptileCommon");
+var url = require("url");
 
 module.exports = async (bookId, reptileType, baseUrl, bookName, catalog, noIsRepeat, timeout) => {
     return getCatalog_common(bookId, baseUrl, bookName, catalog, noIsRepeat, parseInt(reptileType), parseInt(timeout) || 10000);
@@ -15,7 +16,7 @@ async function getCatalog_common(bookId, baseUrl, bookName, catalog, noIsRepeat,
         async function startRp() {
             start++;
             let option = {
-                uri:baseUrl + catalog.reptileAddress,
+                uri: url.resolve(baseUrl, catalog.reptileAddress),
                 encoding : null,
                 headers:{
                     //模拟谷歌浏览器
@@ -53,7 +54,7 @@ async function getCatalog_common(bookId, baseUrl, bookName, catalog, noIsRepeat,
                 }
                 global.reptileCatalog--;
                 console.log(`当前有${global.reptileCatalog}条章节正在爬取`)
-                console.log(baseUrl + catalog.reptileAddress);
+                console.log(url.resolve(baseUrl, catalog.reptileAddress));
                 console.log(ip);
                 let endTime = new Date().getTime();
                 console.log(`成功响应，开始时间${startTime},结束时间${endTime},耗时${endTime-startTime}毫秒`);
@@ -61,7 +62,7 @@ async function getCatalog_common(bookId, baseUrl, bookName, catalog, noIsRepeat,
                 if(start >= 5) {
                     global.reptileCatalog--;
                     console.log(`当前有${global.reptileCatalog}条章节正在爬取`)
-                    console.log(baseUrl + catalog.reptileAddress);
+                    console.log(url.resolve(baseUrl , catalog.reptileAddress));
                     console.log(ip);
                     let endTime = new Date().getTime();
                     console.log(`响应失败,开始时间${startTime},结束时间${endTime},耗时${endTime-startTime}毫秒`);
